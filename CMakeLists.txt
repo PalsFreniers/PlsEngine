@@ -3,7 +3,9 @@ project(PlsEngine)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_library(plsEngine SHARED Library/PlsEngine/Application.cpp Library/PlsEngine.h Library/PlsEngine/EntryPoint.h)
+include_directories(Library/vendor/spdlog/include)
+
+add_library(plsEngine SHARED Library/PlsEngine/Application.cpp Library/PlsEngine.h Library/PlsEngine/EntryPoint.h Library/PlsEngine/Log.cpp Library/PlsEngine/Log.h)
 
 include_directories(Library)
 add_executable(PlsSandbox Sandbox/Application.cpp)

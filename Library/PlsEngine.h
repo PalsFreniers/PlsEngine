@@ -5,8 +5,10 @@
 #ifndef PLSENGINE_PLSENGINE_H
 #define PLSENGINE_PLSENGINE_H
 
+#include "PlsEngine/Log.h"
 #include "PlsEngine/Core.h"
 #include "PlsEngine/Application.h"
+
 
 //--------- ENTRY POINT -------------
 #include "PlsEngine/EntryPoint.h"

@@ -5,6 +5,7 @@
 #ifndef PLSENGINE_APPLICATION_H
 #define PLSENGINE_APPLICATION_H
 
+
 namespace PlsEngine {
 
     class Application {
@@ -16,7 +17,6 @@ namespace PlsEngine {
     };
 
     //to be defined in client
-
     Application* CreateApplication();
 
 } // PlsEngine
