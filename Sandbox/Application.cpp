@@ -3,10 +3,13 @@
 //
 
 #include <PlsEngine.h>
-#include <iostream>
+
 class Sandbox : public PlsEngine::Application {
+private:
+
 public:
     Sandbox() {
+
     }
     ~Sandbox() {
     }

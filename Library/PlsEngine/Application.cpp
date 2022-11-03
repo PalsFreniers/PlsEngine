@@ -4,6 +4,9 @@
 
 #include "Application.h"
 
+#include "Event/ApplicationEvent.h"
+#include "Log.h"
+
 namespace PlsEngine {
     Application::Application() {
 
@@ -14,6 +17,8 @@ namespace PlsEngine {
     }
 
     void Application::Run() {
+        WindowResizeEvent e(1920, 1080);
+        CORE_TRACE(e);
         while(true);
     }
 } // PlsEngine
