@@ -3,13 +3,15 @@
 //
 
 #include "Application.h"
-
-#include "Event/ApplicationEvent.h"
 #include "Log.h"
 
 namespace PlsEngine {
+    
+#define BIND_EVENT_FNC(x) std::bind(&x, this, std::placeholders::_1)
+    
     Application::Application() {
-
+        m_Window = std::unique_ptr<Window>(Window::Create());
+        m_Window->SetEventCallback(BIND_EVENT_FNC(Application::OnEvent));
     }
 
     Application::~Application() {
@@ -17,8 +19,19 @@ namespace PlsEngine {
     }
 
     void Application::Run() {
-        WindowResizeEvent e(1920, 1080);
-        CORE_TRACE(e);
-        while(true);
+        while(m_Running) {
+            m_Window->OnUpdate();
+        }
+    }
+    
+    void Application::OnEvent(Event& e) {
+        CORE_TRACE("{0}", e);
+        EventDispacher disp(e);
+        disp.Dispach<WindowCloseEvent>(BIND_EVENT_FNC(Application::OnWindowClose));
+    }
+    
+    bool Application::OnWindowClose(WindowCloseEvent& e) {
+        m_Running = false;
+        return true;
     }
 } // PlsEngine

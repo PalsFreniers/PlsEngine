@@ -6,7 +6,6 @@
 #define PLSENGINE_KEYEVENT_H
 
 #include "Event.h"
-#include <sstream>
 
 namespace PlsEngine {
     class KeyEvent : public Event {

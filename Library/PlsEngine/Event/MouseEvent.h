@@ -7,7 +7,6 @@
 
 #include "Event.h"
 
-#include <sstream>
 
 namespace PlsEngine {
     class MouseMovedEvent : public Event {

@@ -6,9 +6,7 @@
 #define PLSENGINE_EVENT_H
 
 #include "../Core.h"
-
-#include <string>
-#include <functional>
+#include "../../PlsIncludes.h"
 
 namespace PlsEngine {
     enum class EventType {

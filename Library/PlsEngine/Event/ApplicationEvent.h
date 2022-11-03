@@ -6,7 +6,6 @@
 #define PLSENGINE_APPLICATIONEVENT_H
 
 #include "Event.h"
-#include <sstream>
 
 namespace PlsEngine {
     class WindowResizeEvent : public Event {
