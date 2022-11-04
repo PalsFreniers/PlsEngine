@@ -5,6 +5,8 @@
 #ifndef PLSENGINE_APPLICATION_H
 #define PLSENGINE_APPLICATION_H
 
+#include "Core.h"
+#include "LayerStack.h"
 #include "Event/Event.h"
 #include "Event/ApplicationEvent.h"
 #include "Window.h"
@@ -15,6 +17,7 @@ namespace PlsEngine {
     private:
         bool m_Running = true;
         std::unique_ptr<Window> m_Window;
+        LayerStack m_LayerStack;
     private:
         bool OnWindowClose(WindowCloseEvent& e);
     public:
@@ -24,6 +27,8 @@ namespace PlsEngine {
         void Run();
         
         void OnEvent(Event& e);
+        
+        void PushLayer(Layer* layer, bool overlay);
     };
 
     //to be defined in client

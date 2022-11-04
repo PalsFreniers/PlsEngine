@@ -42,7 +42,6 @@ namespace PlsEngine {
         inline bool IsInCategrory(EventCategory category) {
             return GetCategoryFlags() & category;
         }
-    protected:
         bool m_Handled = false;
     };
 
