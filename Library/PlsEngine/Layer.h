@@ -5,8 +5,6 @@
 
 namespace PlsEngine {
     class Layer {
-    protected:
-        std::string m_DebugName;
     public:
         Layer(const std::string& name = "Layer");
         virtual ~Layer();
@@ -17,5 +15,7 @@ namespace PlsEngine {
         virtual void OnEvent(Event& e) {}
         
         inline const std::string& GetName() const {return m_DebugName;}
+    protected:
+        std::string m_DebugName;
     };
 }

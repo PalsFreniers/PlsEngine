@@ -1,10 +1,6 @@
-#include "PlsIncludes.h"
 #include "LinuxWindow.h"
-#include "PlsEngine/Log.h"
 
-#include "PlsEngine/Event/KeyEvent.h"
-#include "PlsEngine/Event/MouseEvent.h"
-#include "PlsEngine/Event/ApplicationEvent.h"
+#include <glad/glad.h>
 
 namespace PlsEngine {
     static bool s_GLFWInitialized = false;
@@ -33,6 +29,7 @@ namespace PlsEngine {
             int success = glfwInit();
             if(!success) {
                 CORE_ERROR("GLFW Initialisation Error (could not initialise GLFW)");
+                exit(1);
             }
             glfwSetErrorCallback(GLFWErrorCallback);
             s_GLFWInitialized = true;
@@ -40,6 +37,8 @@ namespace PlsEngine {
         
         m_window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
         glfwMakeContextCurrent(m_window);
+        int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+        if(!status) CORE_ERROR("Failed to initialize Glad!");
         glfwSetWindowUserPointer(m_window, &m_Data);
         SetVSync(true);
         
@@ -67,6 +66,12 @@ namespace PlsEngine {
                     break;
                 }
             }
+        });
+        
+        glfwSetCharCallback(m_window, [](GLFWwindow* window, unsigned int character) {
+            WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+            KeyTypedEvent e(character);
+            data.EventCallBack(e);
         });
         
         //MouseEvents

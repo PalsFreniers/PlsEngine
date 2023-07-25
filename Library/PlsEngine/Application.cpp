@@ -5,13 +5,22 @@
 #include "Application.h"
 #include "Log.h"
 
-#include <GLFW/glfw3.h>
+#include <glad/glad.h>
+#include <SFML/Graphics.hpp>
 
 namespace PlsEngine {
     
 #define BIND_EVENT_FNC(x) std::bind(&x, this, std::placeholders::_1)
     
+    Application* Application::s_Instance = nullptr;
+    
     Application::Application() {
+        if(s_Instance) {
+            CORE_ERROR("Application Already Exist!");
+            exit(1);
+        }
+        s_Instance = this;
+        
         m_Window = std::unique_ptr<Window>(Window::Create());
         m_Window->SetEventCallback(BIND_EVENT_FNC(Application::OnEvent));
     }
@@ -23,6 +32,7 @@ namespace PlsEngine {
     void Application::PushLayer(Layer* layer, bool overlay) {
         if(overlay) m_LayerStack.PushOverlay(layer);
         else m_LayerStack.PushLayer(layer);
+        layer->OnAttach();
     }
 
     void Application::Run() {
@@ -37,7 +47,7 @@ namespace PlsEngine {
     void Application::OnEvent(Event& e) {
         EventDispacher disp(e);
         disp.Dispach<WindowCloseEvent>(BIND_EVENT_FNC(Application::OnWindowClose));
-        CORE_TRACE("{0}", e);
+        // CORE_TRACE("{0}", e);
         for(auto it = m_LayerStack.end(); it != m_LayerStack.begin();) {
             (*--it)->OnEvent(e);
             if(e.m_Handled) break;

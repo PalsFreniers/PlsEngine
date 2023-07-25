@@ -1,29 +1,18 @@
 #ifndef PLSENGINE_LINUX_WINDOW_H
 #define PLSENGINE_LINUX_WINDOW_H
 
+#include "PlsIncludes.h"
 #include "PlsEngine/Window.h"
+#include "PlsEngine/Log.h"
+
+#include "PlsEngine/Event/KeyEvent.h"
+#include "PlsEngine/Event/MouseEvent.h"
+#include "PlsEngine/Event/ApplicationEvent.h"
 
 #include <GLFW/glfw3.h>
 
 namespace PlsEngine {
     class LinuxWindow : public Window {
-    private:
-        GLFWwindow* m_window;
-        
-        
-        struct WindowData {
-            std::string Title;
-            unsigned int Width, Height;
-            bool VSync;
-            
-            EventCallbackFn EventCallBack;
-        };
-        
-        WindowData m_Data;
-        
-    private:
-        virtual void Init(const WindowProps& props);
-        virtual void Shutdown();
     public:
         LinuxWindow(const WindowProps& props);
         virtual ~LinuxWindow();
@@ -37,6 +26,22 @@ namespace PlsEngine {
         
         void SetVSync(bool enabled) override;
         bool IsVSync() const override;
+    private:
+        virtual void Init(const WindowProps& props);
+        virtual void Shutdown();
+        
+        GLFWwindow* m_window;
+        
+        
+        struct WindowData {
+            std::string Title;
+            unsigned int Width, Height;
+            bool VSync;
+            
+            EventCallbackFn EventCallBack;
+        };
+        
+        WindowData m_Data;
     };
 };
 

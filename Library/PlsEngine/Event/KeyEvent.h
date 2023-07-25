@@ -8,6 +8,7 @@
 #include "Event.h"
 
 namespace PlsEngine {
+    
     class KeyEvent : public Event {
     public:
         inline int GetKeyCode() const { return m_KeyCode;}
@@ -32,6 +33,18 @@ namespace PlsEngine {
         int m_RepeatCount;
     };
 
+    class KeyTypedEvent : public KeyEvent {
+    public:
+        KeyTypedEvent(int keyCode) : KeyEvent(keyCode) {}
+        std::string ToString() const override {
+            std::stringstream ss;
+            ss << "KeyTypedEvent : <code : " << m_KeyCode << ">";
+            return ss.str();
+        }
+
+        EVENT_CLASS_TYPE(KeyTyped)
+    };
+    
     class KeyReleaseEvent : public KeyEvent {
     public:
         KeyReleaseEvent(int keyCode) : KeyEvent(keyCode) {}

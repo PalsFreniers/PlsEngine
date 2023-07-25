@@ -8,18 +8,14 @@
 #include "Core.h"
 #include "LayerStack.h"
 #include "Event/Event.h"
+#include "Event/KeyEvent.h"
+#include "Event/MouseEvent.h"
 #include "Event/ApplicationEvent.h"
 #include "Window.h"
 
 namespace PlsEngine {
 
     class Application {
-    private:
-        bool m_Running = true;
-        std::unique_ptr<Window> m_Window;
-        LayerStack m_LayerStack;
-    private:
-        bool OnWindowClose(WindowCloseEvent& e);
     public:
         Application();
         virtual ~Application();
@@ -29,6 +25,18 @@ namespace PlsEngine {
         void OnEvent(Event& e);
         
         void PushLayer(Layer* layer, bool overlay);
+    
+        inline static Application& get() { return *s_Instance; }
+        inline Window& getWindow() { return *m_Window; }
+    
+    private:
+        bool OnWindowClose(WindowCloseEvent& e);
+        
+        bool m_Running = true;
+        std::unique_ptr<Window> m_Window;
+        LayerStack m_LayerStack;
+        
+        static Application* s_Instance;
     };
 
     //to be defined in client
