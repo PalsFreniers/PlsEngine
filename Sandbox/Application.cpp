@@ -4,9 +4,28 @@
 
 #include <PlsEngine.h>
 
+class MyLayer : public PlsEngine::Layer {
+public:
+        MyLayer()
+                : Layer("Example") {
+                
+        }
+        
+        void OnUpdate() override {
+                if(PlsEngine::Input::isKeyPressed(PLSEK_TAB)) {
+                        CLIENT_TRACE("tab key pressed");
+                }
+        }
+        
+        void OnEvent(PlsEngine::Event & e) override {
+                
+        }
+};
+
 class Sandbox : public PlsEngine::Application {
 public:
     Sandbox() {
+        PushLayer(new MyLayer(), false);
         PushLayer(new PlsEngine::ImGUILayer(), true);
     }
     

@@ -10,25 +10,25 @@ namespace PlsEngine {
                 return state == GLFW_PRESS || state == GLFW_REPEAT;
         }
         
-        bool isMouseButtonPressed_p(int button) {
+        bool LinuxInput::isMouseButtonPressed_p(int button) {
                 auto window = static_cast<GLFWwindow*>(Application::get().getWindow().getNativeWindow());
                 auto state = glfwGetMouseButton(window, button);
                 return state == GLFW_PRESS;
         }
         
-        std::pair<float, float> getMousePosition_p()  {
+        std::pair<float, float> LinuxInput::getMousePosition_p()  {
                 auto window = static_cast<GLFWwindow*>(Application::get().getWindow().getNativeWindow());
                 double Ypos, Xpos;
                 glfwGetCursorPos(window, &Xpos, &Ypos);
                 return { (float)Xpos, (float)Ypos };
         }
         
-        float getMouseY_p() {
+        float LinuxInput::getMouseY_p() {
                 auto[x, y] = getMousePosition_p();
                 return y;
         }
         
-        float getMouseX_p() {
+        float LinuxInput::getMouseX_p() {
                 auto[x, y] = getMousePosition_p();
                 return x;
         }

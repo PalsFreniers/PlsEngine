@@ -1,5 +1,8 @@
 #pragma once
 
+#include "Keycodes.h"
+#include "MouseButtons.h"
+
 namespace PlsEngine {
         class Input {
         public:
