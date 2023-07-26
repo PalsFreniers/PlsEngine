@@ -12,8 +12,6 @@
 #include "PlsEngine/imgui/imguiLayer.h"
 #include "PlsEngine/Application.h"
 
-#include <GLFW/glfw3.h>
-
 //--------- ENTRY POINT -------------
 #include "PlsEngine/EntryPoint.h"
 //-----------------------------------

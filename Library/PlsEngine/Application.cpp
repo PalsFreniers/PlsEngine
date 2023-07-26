@@ -40,6 +40,11 @@ namespace PlsEngine {
             glClearColor(1, 0, 1, 1);
             glClear(GL_COLOR_BUFFER_BIT);
             for(Layer* l : m_LayerStack) l->OnUpdate();
+            
+            auto[x, y] = Input::getMousePosition();
+            
+            CORE_TRACE("{0}, {1}", x, y);
+            
             m_Window->OnUpdate();
         }
     }

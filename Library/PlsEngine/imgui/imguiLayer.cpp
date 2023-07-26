@@ -129,7 +129,6 @@ namespace PlsEngine {
         io.KeySuper = io.KeysDown[GLFW_KEY_LEFT_SUPER]   || io.KeysDown[GLFW_KEY_RIGHT_SUPER];
         io.KeyAlt   = io.KeysDown[GLFW_KEY_LEFT_ALT]     || io.KeysDown[GLFW_KEY_RIGHT_ALT];
         return false;
-        return false;
     }
 
     bool ImGUILayer::OnKeyTypedEvent(KeyTypedEvent& e) {

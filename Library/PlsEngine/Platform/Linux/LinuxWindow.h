@@ -26,6 +26,8 @@ namespace PlsEngine {
         
         void SetVSync(bool enabled) override;
         bool IsVSync() const override;
+        
+        inline void *getNativeWindow() const override { return m_window; };
     private:
         virtual void Init(const WindowProps& props);
         virtual void Shutdown();
