@@ -9,6 +9,9 @@
 #include "PlsEngine/Event/MouseEvent.h"
 #include "PlsEngine/Event/ApplicationEvent.h"
 
+#include "PlsEngine/Renderer/GraphicsContext.h"
+#include "PlsEngine/Platform/OpenGL/OpenGLContext.h"
+
 #include <GLFW/glfw3.h>
 
 namespace PlsEngine {
@@ -34,6 +37,7 @@ namespace PlsEngine {
         
         GLFWwindow* m_window;
         
+        GraphicsContext *m_context;
         
         struct WindowData {
             std::string Title;

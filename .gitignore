@@ -1,3 +1,6 @@
 #Directorys
-.idea
-cmake-build-debug
+.kdev4
+.cache
+build
+#files
+PlsEngine.kdev4

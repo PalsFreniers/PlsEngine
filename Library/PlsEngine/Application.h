@@ -7,6 +7,7 @@
 
 #include "PlsEngine/Core.h"
 #include "PlsEngine/LayerStack.h"
+#include "PlsEngine/imgui/imguiLayer.h"
 #include "PlsEngine/Event/Event.h"
 #include "PlsEngine/Event/KeyEvent.h"
 #include "PlsEngine/Event/MouseEvent.h"
@@ -35,6 +36,7 @@ namespace PlsEngine {
         
         bool m_Running = true;
         std::unique_ptr<Window> m_Window;
+        ImGUILayer* m_ImGUILayer;
         LayerStack m_LayerStack;
         
         static Application* s_Instance;

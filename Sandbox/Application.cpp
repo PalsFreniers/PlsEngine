@@ -17,6 +17,12 @@ public:
                 }
         }
         
+        void onImGuiRender() override {
+                ImGui::Begin("Test");
+                ImGui::Text("Hello World!");
+                ImGui::End();
+        }
+        
         void OnEvent(PlsEngine::Event & e) override {
                 
         }
@@ -26,7 +32,6 @@ class Sandbox : public PlsEngine::Application {
 public:
     Sandbox() {
         PushLayer(new MyLayer(), false);
-        PushLayer(new PlsEngine::ImGUILayer(), true);
     }
     
     ~Sandbox() {
